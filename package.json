@@ -1,6 +1,6 @@
 {
     "name": "pd-text-editor",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "private": false,
     "dependencies": {
         "@babel/preset-typescript": "^7.15.0",
