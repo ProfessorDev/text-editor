@@ -21,7 +21,7 @@
     },
     "scripts": {
         "start": "craco start",
-        "build": "cross-env BABEL_ENV=production babel src -d dist --extensions '.tsx,.js' && npm run tsc",
+        "build": "cross-env BABEL_ENV=production babel src -d dist --extensions '.tsx,.ts,.js' && npm run tsc",
         "tsc": "tsc --outDir dist",
         "test": "craco test",
         "eject": "react-scripts eject"
