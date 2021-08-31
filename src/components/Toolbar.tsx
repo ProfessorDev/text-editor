@@ -183,7 +183,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
     };
 
     return (
-        <div className="flex justify-between pt-2 px-2 border-b border-gray-300 text-gray-600">
+        <div className="flex flex-col md:flex-row justify-between pt-2 px-2 border-b border-gray-300 text-gray-600 ">
             <div className="flex gap-1 text-sm">
                 <button
                     type="button"

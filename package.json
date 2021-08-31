@@ -62,7 +62,7 @@
         ]
     },
     "description": "A Markdown Text Editor",
-    "main": "dist/index.js",
+    "main": "dist/exports.js",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ProfessorDev/text-editor.git"
