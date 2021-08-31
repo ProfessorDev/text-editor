@@ -11,7 +11,7 @@ marked.setOptions({
     langPrefix: "hljs language-", // highlight.js css expects a top-level 'hljs' class.
     pedantic: false,
     gfm: true,
-    breaks: true,
+    breaks: false,
     sanitize: false,
     smartLists: true,
     smartypants: false,

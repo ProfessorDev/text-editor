@@ -4,6 +4,10 @@
     vertical-align: text-bottom;
 }
 
+.markdown-body img {
+    display: inline;
+}
+
 .markdown-body .anchor {
     float: left;
     line-height: 1;
