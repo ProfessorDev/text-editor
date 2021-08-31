@@ -1,7 +1,7 @@
 {
-    "name": "text-editor",
+    "name": "pd-text-editor",
     "version": "0.1.0",
-    "private": true,
+    "private": false,
     "dependencies": {
         "@babel/preset-typescript": "^7.15.0",
         "@craco/craco": "^6.2.0",
@@ -55,6 +55,24 @@
             "@babel/preset-typescript"
         ]
     },
+    "description": "A Markdown Text Editor",
+    "main": "dist/index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ProfessorDev/text-editor.git"
+    },
+    "keywords": [
+        "Editor",
+        "TextEditor",
+        "ProfessorDev",
+        "Professor"
+    ],
+    "author": "Vishal Chiluveri",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ProfessorDev/text-editor/issues"
+    },
+    "homepage": "https://github.com/ProfessorDev/text-editor",
     "devDependencies": {
         "@babel/cli": "^7.10.4",
         "@types/dompurify": "^2.2.3",
