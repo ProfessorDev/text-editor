@@ -40,7 +40,7 @@ function inlineKatex(
         return -1;
       }
 
-      const index = match.index ?? 0 + match[1].length;
+      const index = (match.index ?? 0) + match[1].length;
       const possibleKatex = src.substring(index);
 
       if (possibleKatex.match(inlineRule)) {
