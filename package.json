@@ -1,96 +1,95 @@
 {
-    "name": "pd-text-editor",
-    "version": "0.1.6",
-    "private": false,
-    "dependencies": {
-        "@babel/preset-typescript": "^7.15.0",
-        "@craco/craco": "^6.2.0",
-        "@heroicons/react": "^1.0.4",
-        "@testing-library/jest-dom": "^5.14.1",
-        "@testing-library/react": "^11.2.7",
-        "@testing-library/user-event": "^12.8.3",
-        "@types/katex": "^0.16.3",
-        "dompurify": "^2.3.1",
-        "highlight.js": "^11.2.0",
-        "html-react-parser": "^1.2.8",
-        "katex": "^0.16.8",
-        "marked": "^3.0.2",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "react-hook-form": "^7.14.0",
-        "react-scripts": "4.0.3",
-        "web-vitals": "^1.1.2"
-    },
-    "scripts": {
-        "start": "craco start",
-        "build": "cross-env BABEL_ENV=production babel src -d dist --extensions '.tsx,.ts,.js' && npm run tsc",
-        "tsc": "tsc --outDir dist",
-        "test": "craco test",
-        "eject": "react-scripts eject"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "babel": {
-        "presets": [
-            [
-                "react-app",
-                {
-                    "absoluteRuntime": false
-                }
-            ],
-            [
-                "@babel/preset-react",
-                {
-                    "runtime": "automatic"
-                }
-            ],
-            "@babel/preset-typescript"
-        ]
-    },
-    "description": "A Markdown Text Editor",
-    "main": "dist/exports.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/ProfessorDev/text-editor.git"
-    },
-    "keywords": [
-        "Editor",
-        "TextEditor",
-        "ProfessorDev",
-        "Professor"
+  "name": "pd-text-editor",
+  "version": "0.1.6",
+  "private": false,
+  "dependencies": {
+    "@babel/preset-typescript": "^7.15.0",
+    "@craco/craco": "^6.2.0",
+    "@heroicons/react": "^1.0.4",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/katex": "^0.16.3",
+    "dompurify": "^2.3.1",
+    "highlight.js": "^11.2.0",
+    "html-react-parser": "^1.2.8",
+    "katex": "^0.16.8",
+    "marked": "^3.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.46.1",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "cross-env BABEL_ENV=production babel src -d dist --extensions '.tsx,.ts,.js' && npm run tsc",
+    "tsc": "tsc --outDir dist",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "author": "Vishal Chiluveri",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/ProfessorDev/text-editor/issues"
-    },
-    "homepage": "https://github.com/ProfessorDev/text-editor",
-    "devDependencies": {
-        "@babel/cli": "^7.10.4",
-        "@babel/preset-react": "^7.14.5",
-        "@types/dompurify": "^2.2.3",
-        "@types/marked": "^3.0.0",
-        "@types/react": "^17.0.19",
-        "autoprefixer": "^9.8.6",
-        "cross-env": "^7.0.2",
-        "postcss": "^7.0.36",
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.8",
-        "typescript": "^4.1.3"
-    }
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "react-app",
+        {
+          "absoluteRuntime": false
+        }
+      ],
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ],
+      "@babel/preset-typescript"
+    ]
+  },
+  "description": "A Markdown Text Editor",
+  "main": "dist/exports.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProfessorDev/text-editor.git"
+  },
+  "keywords": [
+    "Editor",
+    "TextEditor",
+    "ProfessorDev",
+    "Professor"
+  ],
+  "author": "Vishal Chiluveri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ProfessorDev/text-editor/issues"
+  },
+  "homepage": "https://github.com/ProfessorDev/text-editor",
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/preset-react": "^7.14.5",
+    "@types/dompurify": "^2.2.3",
+    "@types/marked": "^3.0.0",
+    "@types/react": "^17.0.19",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "autoprefixer": "^9.8.6",
+    "cross-env": "^7.0.2",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.8",
+    "typescript": "^5.2.2"
+  }
 }

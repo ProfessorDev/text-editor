@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { EditorForm, FileResult } from "../types";
-import { Editor } from "./Editor";
+import { Editor, EditorProps } from "./Editor";
 import { Preview } from "./Preview";
 import { Toolbar } from "./Toolbar";
 
 export interface TextEditorProps {
     onFileUpload?: (file: File) => Promise<FileResult>;
+    editorProps?: EditorProps;
 }
 
-export const TextEditor: React.FC<TextEditorProps> = ({ onFileUpload }) => {
+export const TextEditor: React.FC<TextEditorProps> = ({
+    onFileUpload,
+    editorProps,
+}) => {
     const [mode, setMode] = useState("write");
     const { setValue } = useFormContext<EditorForm>();
 
@@ -39,14 +43,14 @@ export const TextEditor: React.FC<TextEditorProps> = ({ onFileUpload }) => {
                                 file: file,
                                 type: "error",
                             };
-                        })
+                        }),
                     );
                 }}
                 mode={mode}
                 setMode={setMode}
             />
             <div className="flex flex-col p-2">
-                {mode === "write" && <Editor />}
+                {mode === "write" && <Editor {...editorProps} />}
                 {mode === "preview" && <Preview />}
             </div>
         </div>

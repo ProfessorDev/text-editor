@@ -3,9 +3,10 @@ import { useFormContext } from "react-hook-form";
 import { AttachFiles } from "./AttachFiles";
 import { UpdateEditorSelection } from "./UpdateEditorSelection";
 
-export interface EditorProps {}
+export interface EditorProps
+    extends React.HTMLAttributes<HTMLTextAreaElement> { }
 
-export const Editor: React.FC<EditorProps> = () => {
+export const Editor: React.FC<EditorProps> = (props) => {
     const { register, getValues, setValue } = useFormContext();
     const editorRef = useRef<HTMLTextAreaElement | null>();
     const textRegister = register("text");
@@ -34,7 +35,7 @@ export const Editor: React.FC<EditorProps> = () => {
 
     const onEnter = (e: KeyboardEvent) => {
         const { beforeText, selectedText, afterText } = getSelections();
-        let [lastLineBeforeText] = beforeText.split("\n").slice(-1);
+        const [lastLineBeforeText] = beforeText.split("\n").slice(-1);
 
         const orderedList = lastLineBeforeText.match(/^(\s*)([0-9]+)\.\s/);
         const unorderedList = lastLineBeforeText.match(/^(\s*)-\s/);
@@ -55,7 +56,7 @@ export const Editor: React.FC<EditorProps> = () => {
 
     const onTab = (e: KeyboardEvent) => {
         const { beforeText, selectedText, afterText } = getSelections();
-        let lines = beforeText.split("\n");
+        const lines = beforeText.split("\n");
         const [lastLineBeforeText] = lines.splice(-1, 1);
 
         const orderedList = lastLineBeforeText.match(/^(\s*)[0-9]+\.\s(.*)/);
@@ -65,13 +66,13 @@ export const Editor: React.FC<EditorProps> = () => {
             e.preventDefault();
             const [, spaces, rem] = orderedList;
             const result = `${lines.join(
-                "\n"
+                "\n",
             )}\n    ${spaces}1. ${rem}${selectedText}${afterText}`;
             setText(result);
         } else if (unorderedList) {
             e.preventDefault();
             const result = `${lines.join(
-                "\n"
+                "\n",
             )}\n    ${lastLineBeforeText}${selectedText}${afterText}`;
             setText(result);
         }
@@ -79,7 +80,7 @@ export const Editor: React.FC<EditorProps> = () => {
 
     const onShiftTab = (e: KeyboardEvent) => {
         const { beforeText, selectedText, afterText } = getSelections();
-        let lines = beforeText.split("\n");
+        const lines = beforeText.split("\n");
         const [lastLineBeforeText] = lines.splice(-1, 1);
 
         const orderedList = lastLineBeforeText.match(/^(\s*)([0-9]+\.\s.*)/);
@@ -96,7 +97,7 @@ export const Editor: React.FC<EditorProps> = () => {
                 [, newSpaces] = spacesMatch;
             }
             const result = `${lines.join(
-                "\n"
+                "\n",
             )}\n${newSpaces}${text}${selectedText}${afterText}`;
             setText(result);
         } else if (unorderedList) {
@@ -110,7 +111,7 @@ export const Editor: React.FC<EditorProps> = () => {
             }
 
             const result = `${lines.join(
-                "\n"
+                "\n",
             )}\n${newSpaces}${text}${selectedText}${afterText}`;
             setText(result);
         }
@@ -120,6 +121,7 @@ export const Editor: React.FC<EditorProps> = () => {
         <div className="flex flex-col bg-gray-100 rounded-md border border-gray-300">
             <UpdateEditorSelection editorRef={editorRef} />
             <textarea
+                {...props}
                 {...textRegister}
                 className="bg-transparent max-h-96 p-2 text-sm placeholder-gray-700 focus:bg-white"
                 onKeyDown={(e) => {
@@ -130,9 +132,11 @@ export const Editor: React.FC<EditorProps> = () => {
                     } else if (e.key === "Tab") {
                         onTab(e);
                     }
+                    props?.onKeyDown?.(e);
                 }}
                 style={{
                     minHeight: "12rem",
+                    ...props.style,
                 }}
                 ref={(instance) => {
                     textRegister.ref(instance);
@@ -142,8 +146,9 @@ export const Editor: React.FC<EditorProps> = () => {
                 onSelect={(e) => {
                     setSelection(
                         e.currentTarget.selectionStart,
-                        e.currentTarget.selectionEnd
+                        e.currentTarget.selectionEnd,
                     );
+                    props?.onSelect?.(e);
                 }}
             ></textarea>
             <AttachFiles />
