@@ -123,6 +123,10 @@ export const Editor: React.FC<EditorProps> = (props) => {
             <textarea
                 {...props}
                 {...textRegister}
+                onBlur={(e) => {
+                    textRegister.onBlur(e);
+                    props?.onBlur?.(e);
+                }}
                 className="bg-transparent max-h-96 p-2 text-sm placeholder-gray-700 focus:bg-white"
                 onKeyDown={(e) => {
                     if (e.key === "Enter") {
