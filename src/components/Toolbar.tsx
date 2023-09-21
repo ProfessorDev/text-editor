@@ -4,7 +4,7 @@ import {
     LinkIcon,
     MenuAlt3Icon,
     UploadIcon,
-    ViewListIcon
+    ViewListIcon,
 } from "@heroicons/react/outline";
 import { useFormContext } from "react-hook-form";
 import { EditorForm, FileResult } from "../types";
@@ -172,7 +172,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 
         const text = getText();
         const textMatch = text.match(
-            /^(.*)\n!\[uploading files\.\.\.\]\(\)\n(.*)$/s
+            /^(.*)\n!\[uploading files\.\.\.\]\(\)\n(.*)$/s,
         );
 
         if (textMatch) {
@@ -215,15 +215,13 @@ export const Toolbar: React.FC<ToolbarProps> = ({
             <div className="flex gap-1 text-sm">
                 <button
                     type="button"
-                    className={`py-1 px-4 relative rounded-t-md hover:text-gray-900 ${
-                        mode === "write"
+                    className={`py-1 px-4 relative rounded-t-md hover:text-gray-900 ${mode === "write"
                             ? "border border-gray-300 text-gray-900"
                             : "border border-transparent"
-                    }`}
+                        }`}
                     style={{
                         top: "1px",
-                        borderBottomColor:
-                            mode === "write" ? "white" : undefined,
+                        borderBottomColor: mode === "write" ? "white" : undefined,
                     }}
                     onClick={() => {
                         setMode("write");
@@ -233,15 +231,13 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                 </button>
                 <button
                     type="button"
-                    className={`py-1 px-4 relative rounded-t-md hover:text-gray-900 ${
-                        mode === "preview"
+                    className={`py-1 px-4 relative rounded-t-md hover:text-gray-900 ${mode === "preview"
                             ? "border border-gray-300 text-gray-900"
                             : "border border-transparent"
-                    }`}
+                        }`}
                     style={{
                         top: "1px",
-                        borderBottomColor:
-                            mode === "preview" ? "white" : undefined,
+                        borderBottomColor: mode === "preview" ? "white" : undefined,
                     }}
                     onClick={() => {
                         setMode("preview");
@@ -254,6 +250,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                 <div className="flex gap-2">
                     <button
                         type="button"
+                        title="Heading"
                         className="hover:text-blue-600"
                         onClick={onHeadingClick}
                     >
@@ -261,6 +258,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                     </button>
                     <button
                         type="button"
+                        title="Bold"
                         className="hover:text-blue-600 font-bold"
                         onClick={onBoldClick}
                     >
@@ -268,6 +266,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                     </button>
                     <button
                         type="button"
+                        title="Italic"
                         className="hover:text-blue-600 italic"
                         onClick={onItalicClick}
                     >
@@ -277,6 +276,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                 <div className="flex gap-2">
                     <button
                         type="button"
+                        title="Quote"
                         className="hover:text-blue-600"
                         onClick={onQuoteClick}
                     >
@@ -284,6 +284,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                     </button>
                     <button
                         type="button"
+                        title="Code"
                         className="hover:text-blue-600"
                         onClick={onCodeClick}
                     >
@@ -291,6 +292,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                     </button>
                     <button
                         type="button"
+                        title="Link"
                         className="hover:text-blue-600"
                         onClick={onLinkClick}
                     >
@@ -300,6 +302,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                 <div className="flex gap-2">
                     <button
                         type="button"
+                        title="Bulleted List"
                         className="hover:text-blue-600"
                         onClick={onBulletedListClick}
                     >
@@ -307,6 +310,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                     </button>
                     <button
                         type="button"
+                        title="Numbered List"
                         className="hover:text-blue-600"
                         onClick={onNumberedListClick}
                     >
@@ -318,9 +322,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                         className="hover:text-blue-600"
                         multiple
                         onChange={(e) => {
-                            onFileSelect(
-                                Array.from(e.currentTarget.files || [])
-                            );
+                            onFileSelect(Array.from(e.currentTarget.files || []));
                         }}
                     >
                         <UploadIcon className="h-6" />
