@@ -4,6 +4,72 @@ import { EditorForm, FileResult } from "../types";
 import { Editor, EditorProps } from "./Editor";
 import { Preview } from "./Preview";
 import { Toolbar } from "./Toolbar";
+import { InformationCircleIcon } from "@heroicons/react/outline";
+
+const Information = () => {
+    const [hovered, setHovered] = useState(false);
+    return (
+        <div
+            className="px-2 pb-1"
+            onMouseMove={() => {
+                setHovered(true);
+            }}
+            onMouseOut={() => {
+                setHovered(false);
+            }}
+        >
+            <div className={`text-xs`}>
+                <InformationCircleIcon className="h-4 inline" /> Hover for information
+            </div>
+            <div className={`${hovered ? "block" : "hidden"} text-xs`}>
+                <InformationCircleIcon className="h-4 inline" /> Learn how to write in
+                Markdown{" "}
+                <a
+                    href="https://www.markdownguide.org/basic-syntax/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-blue-600 text-xs hover:underline"
+                >
+                    click here
+                </a>
+            </div>
+            <div className={`${hovered ? "block" : "hidden"} text-xs`}>
+                <InformationCircleIcon className="h-4 inline" /> Markdown Cheatsheet{" "}
+                <a
+                    href="https://www.markdownguide.org/cheat-sheet/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-blue-600 text-xs hover:underline"
+                >
+                    click here
+                </a>
+            </div>
+            <div className={`${hovered ? "block" : "hidden"} text-xs`}>
+                <InformationCircleIcon className="h-4 inline" /> Generate Markdown Table{" "}
+                <a
+                    href="https://tableconvert.com/markdown-generator"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-blue-600 text-xs hover:underline"
+                >
+                    click here
+                </a>
+            </div>
+            <div className={`${hovered ? "block" : "hidden"} text-xs`}>
+                <InformationCircleIcon className="h-4 inline" /> Creating and
+                highlighting code blocks{" "}
+                <a
+                    href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-blue-600 text-xs hover:underline"
+                >
+                    click here
+                </a>
+            </div>
+        </div>
+    );
+};
 
 export interface TextEditorProps {
     onFileUpload?: (file: File) => Promise<FileResult>;
@@ -53,6 +119,7 @@ export const TextEditor: React.FC<TextEditorProps> = ({
                 {mode === "write" && <Editor {...editorProps} />}
                 {mode === "preview" && <Preview />}
             </div>
+            <Information />
         </div>
     );
 };
