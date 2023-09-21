@@ -9,6 +9,7 @@ import {
 import { useFormContext } from "react-hook-form";
 import { EditorForm, FileResult } from "../types";
 import { FileButton } from "./FileButton";
+import { Symbols } from "./Symbols";
 
 export interface ToolbarProps {
     mode: string;
@@ -182,6 +183,33 @@ export const Toolbar: React.FC<ToolbarProps> = ({
         }
     };
 
+    const onInlineMathClick = () => {
+        const selection = getSelection();
+        const { beforeText, selectedText, afterText } = getSelections();
+
+        const result = `${beforeText} $ ${selectedText} $ ${afterText}`;
+        setText(result);
+        setSelection(selection.start + 3, selection.end + 3);
+    };
+
+    const onDisplayMathClick = () => {
+        const selection = getSelection();
+        const { beforeText, selectedText, afterText } = getSelections();
+
+        const result = `${beforeText}\n$$\n${selectedText}\n$$\n${afterText}`;
+        setText(result);
+        setSelection(selection.start + 4, selection.end + 4);
+    };
+
+    const onSymbolClick = (symbol: string) => {
+        const selection = getSelection();
+        const { beforeText, afterText } = getSelections();
+
+        const result = `${beforeText} ${symbol} ${afterText}`;
+        setText(result);
+        setSelection(selection.start, selection.start + symbol.length + 2);
+    };
+
     return (
         <div className="flex flex-col md:flex-row justify-between pt-2 px-2 border-b border-gray-300 text-gray-600 ">
             <div className="flex gap-1 text-sm">
@@ -297,6 +325,25 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                     >
                         <UploadIcon className="h-6" />
                     </FileButton>
+                </div>
+                <div className="relative flex gap-2">
+                    <button
+                        type="button"
+                        title="Inline Math"
+                        className="hover:text-blue-600"
+                        onClick={onInlineMathClick}
+                    >
+                        $
+                    </button>
+                    <button
+                        type="button"
+                        title="DisplayMode Math"
+                        className="hover:text-blue-600"
+                        onClick={onDisplayMathClick}
+                    >
+                        $$
+                    </button>
+                    <Symbols onSymbolClick={onSymbolClick} />
                 </div>
             </div>
         </div>
