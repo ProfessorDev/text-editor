@@ -2,6 +2,7 @@ import hljs from "highlight.js";
 import marked from "marked";
 import katexExtension from "./katexExtension";
 import { videoRenderer } from "./videoRenderer";
+import { youtubeRenderer } from "./youtubeEmbedRenderer";
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -21,6 +22,9 @@ marked.setOptions({
 
 marked.use({
   renderer: videoRenderer,
+});
+marked.use({
+  renderer: youtubeRenderer,
 });
 
 marked.use(
