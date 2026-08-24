@@ -4,7 +4,6 @@
   "private": false,
   "dependencies": {
     "@babel/preset-typescript": "^7.15.0",
-    "@craco/craco": "^6.2.0",
     "@heroicons/react": "^1.0.4",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -18,12 +17,11 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.46.1",
-    "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "cross-env BABEL_ENV=production babel src -d dist --extensions '.tsx,.ts,.js' && npm run tsc",
+    "start": "vite",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider BABEL_ENV=production babel src -d dist --extensions '.tsx,.ts,.js' && npm run tsc",
     "tsc": "tsc --outDir dist",
     "test": "craco test",
     "eject": "react-scripts eject"
@@ -46,9 +44,9 @@
   "babel": {
     "presets": [
       [
-        "react-app",
+        "@babel/preset-env",
         {
-          "absoluteRuntime": false
+          "modules": false
         }
       ],
       [
@@ -80,16 +78,20 @@
   "homepage": "https://github.com/ProfessorDev/text-editor",
   "devDependencies": {
     "@babel/cli": "^7.10.4",
+    "@babel/preset-env": "^7.29.7",
     "@babel/preset-react": "^7.14.5",
     "@types/dompurify": "^2.2.3",
     "@types/marked": "^3.0.0",
     "@types/react": "^17.0.19",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
+    "@vitejs/plugin-react": "^6.1.0",
     "autoprefixer": "^9.8.6",
+    "babel-preset-react-app": "^10.1.0",
     "cross-env": "^7.0.2",
     "postcss": "^7.0.36",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.8",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vite": "^8.2.2"
   }
 }
